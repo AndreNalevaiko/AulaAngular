@@ -1,0 +1,49 @@
+<div class="container">
+	<h1>Cadastro de Cliente</h1>
+	<form>
+		<div class="form-group">
+			<label for="nome">Nome</label> <input type="text"
+				class="form-control" name="nome" [(ngModel)]="cliente.nome" required>
+		</div>
+		<div class="form-group">
+			<label for="cpf">Idade</label> <input type="text"
+				class="form-control" name="idade" [(ngModel)]="cliente.idade"
+				required>
+		</div>
+		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="addCliente()">Editar</button>
+		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="is_edit = !is_edit">Cancelar</button>
+		<button type="button" class="btn btn-success" *ngIf="!is_edit" (click)="addCliente()">Cadastrar</button>
+	</form>
+
+	<p></p>
+	<table class="table">
+		<tr>
+			<th>Nome</th>
+			<th>CPF</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr *ngFor="let cliente of clientes">
+			<td>{{cliente.nome}}</td>
+			<td>{{cliente.idade}}</td>
+			<td>
+				<button type="button" class="btn btn-warn" (click)="editCliente(cliente)">Alterar</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-danger"
+					(click)="removeCliente()">Excluir</button>
+			</td>
+		</tr>
+
+	</table>
+
+</div>
+
+
+
+
+
+
+
+
+

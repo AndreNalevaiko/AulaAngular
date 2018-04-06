@@ -1,0 +1,40 @@
+<div class="container">
+	<h1>Cadastro de Bancos</h1>
+	<form>
+		<div class="form-group">
+			<label for="nome">Nome</label> <input type="text"
+				class="form-control" name="nome" [(ngModel)]="banco.nome" required>
+		</div>
+		<button type="button" class="btn btn-success" (click)="addCliente()">Cadastrar</button>
+	</form>
+
+	<p></p>
+	<table class="table">
+		<tr>
+			<th>Nome</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr *ngFor="let banco of bancos">
+			<td>{{banco.nome}}</td>
+			<td>
+				<button type="button" class="btn btn-warn" (click)="editCliente()">Alterar</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-danger"
+					(click)="removeCliente()">Excluir</button>
+			</td>
+		</tr>
+
+	</table>
+
+</div>
+
+
+
+
+
+
+
+
+
