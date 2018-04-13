@@ -25,15 +25,42 @@ export class HttpBancoComponent {
   }
 
   addBanco() {
-    this.httpBancoS.addBanco(this.banco).subscribe(
-      data => data,
-      error => alert(error),
-      () => this.getBancos()
-    );
+	  if(this.is_edit){
+		  this.httpBancoS.editBanco(this.banco).subscribe(
+			      data => data,
+			      error => alert(error),
+			      () => this.getBancos()
+			    );
+		  this.is_edit = false;
+		  this.banco.id = null;
+		  this.banco.nome = null;
+	  } else {
+		  this.httpBancoS.addBanco(this.banco).subscribe(
+			      data => data,
+			      error => alert(error),
+			      () => this.getBancos()
+			    );
+		  this.banco.id = null;
+		  this.banco.nome = null;
+	  }
     
-   
-
-
+  }
+  
+    
+	editBanco(banco) {
+	    this.banco.nome = banco.nome;
+	    this.banco.id = banco.id;
+	    
+	    this.is_edit = true;
+  }
+	
+	removeBanco(banco) {
+		this.httpBancoS.excluiBanco(banco).subscribe(
+				  data => data,
+				  error => alert(error),
+				  () => this.getBancos()
+		  	);
+	    
   }
   
 }

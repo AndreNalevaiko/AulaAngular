@@ -5,7 +5,7 @@
 			<label for="nome">Nome</label> <input type="text"
 				class="form-control" name="nome" [(ngModel)]="banco.nome" required>
 		</div>
-		<button type="button" class="btn btn-success" (click)="addCliente()">Cadastrar</button>
+		<button type="button" class="btn btn-success" (click)="addBanco()">Cadastrar</button>
 	</form>
 
 	<p></p>
@@ -18,11 +18,10 @@
 		<tr *ngFor="let banco of bancos">
 			<td>{{banco.nome}}</td>
 			<td>
-				<button type="button" class="btn btn-warn" (click)="editCliente()">Alterar</button>
-			</td>
-			<td>
+				<button type="button" class="btn btn-warn" (click)="editBanco(banco)">Alterar</button>
+
 				<button type="button" class="btn btn-danger"
-					(click)="removeCliente()">Excluir</button>
+					(click)="removeBanco(banco)">Excluir</button>
 			</td>
 		</tr>
 

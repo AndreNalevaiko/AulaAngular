@@ -1,6 +1,6 @@
 <div class="container">
 	<h1>Cadastro de Cliente</h1>
-	<form>
+	<form *ngIf="!new_contract">
 		<div class="form-group">
 			<label for="nome">Nome</label> <input type="text"
 				class="form-control" name="nome" [(ngModel)]="cliente.nome" required>
@@ -13,6 +13,26 @@
 		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="addCliente()">Editar</button>
 		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="is_edit = !is_edit">Cancelar</button>
 		<button type="button" class="btn btn-success" *ngIf="!is_edit" (click)="addCliente()">Cadastrar</button>
+	</form>
+	
+	<form *ngIf="new_contract">
+		<span>{{clienteContract.nome}}</span>
+		<span>{{clienteContract.idade}}</span>
+		
+
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <label class="input-group-text" for="inputGroupSelect01">Banco</label>
+		  </div>
+		  <select class="custom-select"  type="text"
+			class="form-control" name="idade" [(ngModel)]="cliente.nome"
+			required>
+		    <option *ngFor="let banco of bancos" value="banco.id">{{banco.nome}}</option>
+		  </select>
+		</div>
+
+
+		<button type="button" class="btn btn-info" *ngIf="!is_edit" (click)="addCliente()">Cadastrar Contrato</button>
 	</form>
 
 	<p></p>
@@ -28,10 +48,11 @@
 			<td>{{cliente.idade}}</td>
 			<td>
 				<button type="button" class="btn btn-warn" (click)="editCliente(cliente)">Alterar</button>
-			</td>
-			<td>
+
 				<button type="button" class="btn btn-danger"
-					(click)="removeCliente()">Excluir</button>
+					(click)="removeCliente(cliente)">Excluir</button>
+				<button type="button" class="btn btn-info"
+					(click)="cadastrarContrato(cliente)">Cadastrar contrato</button>
 			</td>
 		</tr>
 

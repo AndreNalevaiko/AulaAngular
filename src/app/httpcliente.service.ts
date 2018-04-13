@@ -37,4 +37,13 @@ export class HttpClienteService {
 	      post('http://localhost:8080/sistemadevendas/rest/cliente/alterar',
 	      json, options).map(res => res.json());
 	  }
+  
+  excluiCliente(cliente: Cliente): Observable<any> {
+	    const json = JSON.stringify(cliente);
+	    const headers = new Headers({ 'Content-Type': 'application/json' });
+	    const options = new RequestOptions({ headers: headers });
+	    return this._http.
+	      post('http://localhost:8080/sistemadevendas/rest/cliente/excluir',
+	      json, options).map(res => res.json());
+	  }
 }

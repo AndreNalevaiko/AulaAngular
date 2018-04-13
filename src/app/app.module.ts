@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClienteComponent } from './httpcliente.component';
 import { HttpBancoComponent } from './httpbanco.component';
+import { HttpContratoComponent } from './httpcontrato.component';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
@@ -20,7 +21,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     HttpClienteComponent,
-    HttpBancoComponent
+    HttpBancoComponent,
+    HttpContratoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   {
     path: 'banco',
     component: HttpBancoComponent
+  },
+  {
+    path: 'contrato',
+    component: HttpContratoComponent
   }
 ])
   ],

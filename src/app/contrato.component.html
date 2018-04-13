@@ -1,0 +1,32 @@
+<div class="container">
+	<h1>Listagem de Contratos</h1>
+	<p></p>
+	<table class="table">
+		<tr>
+			<th>Cliente</th>
+			<th>Idade do Cliente</th>
+			<th>Banco</th>
+			<th></th>
+		</tr>
+		<tr *ngFor="let contrato of contratos">
+			<td>{{contrato.cliente.nome}}</td>
+			<td>{{contrato.cliente.idade}}</td>
+			<td>{{contrato.banco.nome}}</td>
+			<td>
+				<button type="button" class="btn btn-danger"
+					(click)="removeContrato(contrato)">Excluir</button>
+			</td>
+		</tr>
+
+	</table>
+
+</div>
+
+
+
+
+
+
+
+
+

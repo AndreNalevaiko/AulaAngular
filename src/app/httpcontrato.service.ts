@@ -4,15 +4,15 @@ import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import { Banco } from './banco.component'
+import { Contrato } from './contrato.component'
 
 @Injectable()
-export class HttpBancoService {
+export class HttpContratoService {
   constructor(private _http: Http) { }
 
-  getBancos(): Observable<Banco[]> {
+  getContratos(): Observable<Contrato[]> {
     return this._http.
-      get('http://localhost:8080/sistemadevendas/rest/banco').
+      get('http://localhost:8080/sistemadevendas/rest/contrato').
       map(this.extractData);
   }
 
@@ -20,30 +20,30 @@ export class HttpBancoService {
     return res.json();
   }
 
-  addBanco(banco: Banco): Observable<string> {
-    const json = JSON.stringify(banco);
+  addContrato(contrato: Contrato): Observable<string> {
+    const json = JSON.stringify(contrato);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this._http.
-      post('http://localhost:8080/sistemadevendas/rest/banco',
+      post('http://localhost:8080/sistemadevendas/rest/contrato',
       json, options).map(res => res.json());
   }
   
-  editBanco(banco: Banco): Observable<any> {
-	    const json = JSON.stringify(banco);
+  editContrato(contrato: Contrato): Observable<any> {
+	    const json = JSON.stringify(contrato);
 	    const headers = new Headers({ 'Content-Type': 'application/json' });
 	    const options = new RequestOptions({ headers: headers });
 	    return this._http.
-	      post('http://localhost:8080/sistemadevendas/rest/banco/alterar',
+	      post('http://localhost:8080/sistemadevendas/rest/contrato/alterar',
 	      json, options).map(res => res.json());
 	  }
 
-	excluiBanco(banco: Banco): Observable<any> {
-		    const json = JSON.stringify(banco);
+	excluiContrato(contrato: Contrato): Observable<any> {
+		    const json = JSON.stringify(contrato);
 		    const headers = new Headers({ 'Content-Type': 'application/json' });
 		    const options = new RequestOptions({ headers: headers });
 		    return this._http.
-		      post('http://localhost:8080/sistemadevendas/rest/banco/excluir',
+		      post('http://localhost:8080/sistemadevendas/rest/contrato/excluir',
 		      json, options).map(res => res.json());
 		  }
   
