@@ -12,7 +12,7 @@ export class HttpClienteService {
 
   getClientes(): Observable<Cliente[]> {
     return this._http.
-      get('http://localhost:8080/sistemadevendas/rest/cliente').
+      get('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/cliente').
       map(this.extractData);
   }
 
@@ -25,7 +25,7 @@ export class HttpClienteService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this._http.
-      post('http://localhost:8080/sistemadevendas/rest/cliente',
+      post('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/cliente',
       json, options).map(res => res.json());
   }
   
@@ -34,7 +34,7 @@ export class HttpClienteService {
 	    const headers = new Headers({ 'Content-Type': 'application/json' });
 	    const options = new RequestOptions({ headers: headers });
 	    return this._http.
-	      post('http://localhost:8080/sistemadevendas/rest/cliente/alterar',
+	      post('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/cliente/alterar',
 	      json, options).map(res => res.json());
 	  }
   
@@ -43,7 +43,7 @@ export class HttpClienteService {
 	    const headers = new Headers({ 'Content-Type': 'application/json' });
 	    const options = new RequestOptions({ headers: headers });
 	    return this._http.
-	      post('http://localhost:8080/sistemadevendas/rest/cliente/excluir',
+	      post('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/cliente/excluir',
 	      json, options).map(res => res.json());
 	  }
 }

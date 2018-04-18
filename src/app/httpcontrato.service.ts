@@ -12,7 +12,7 @@ export class HttpContratoService {
 
   getContratos(): Observable<Contrato[]> {
     return this._http.
-      get('http://localhost:8080/sistemadevendas/rest/contrato').
+      get('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/contrato').
       map(this.extractData);
   }
 
@@ -20,21 +20,33 @@ export class HttpContratoService {
     return res.json();
   }
 
-  addContrato(contrato: Contrato): Observable<string> {
-    const json = JSON.stringify(contrato);
+  generateContratoWithCustomer(data): Observable<string> {
+	  var stringUrl = 'http://node7458-newton.br1.saphir.global/sistemadevendas/rest/contrato/generateWithCustomer?';
+	  stringUrl = stringUrl + 'idCliente=' + data.idCustomer + '&idBanco=' + data.idBanco;
+    const json = JSON.stringify(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this._http.
-      post('http://localhost:8080/sistemadevendas/rest/contrato',
+    return this._http.post(stringUrl,
       json, options).map(res => res.json());
   }
+  
+  generateContratoWithoutCustomer(data): Observable<string> {
+	  var url = 'http://node7458-newton.br1.saphir.global/sistemadevendas/rest/contrato/generateWithoutCustomer?';
+	  url = url + 'nomeCli=' + data.nomeCli + '&idadeCli=' + data.idadeCli + '&idBanco=' + data.idBanco;
+	    const json = JSON.stringify(data);
+	    const headers = new Headers({ 'Content-Type': 'application/json' });
+	    const options = new RequestOptions({ headers: headers });
+	    return this._http.
+	      post(url,
+	      json, options).map(res => res.json());
+	  }
   
   editContrato(contrato: Contrato): Observable<any> {
 	    const json = JSON.stringify(contrato);
 	    const headers = new Headers({ 'Content-Type': 'application/json' });
 	    const options = new RequestOptions({ headers: headers });
 	    return this._http.
-	      post('http://localhost:8080/sistemadevendas/rest/contrato/alterar',
+	      post('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/contrato/alterar',
 	      json, options).map(res => res.json());
 	  }
 
@@ -43,7 +55,7 @@ export class HttpContratoService {
 		    const headers = new Headers({ 'Content-Type': 'application/json' });
 		    const options = new RequestOptions({ headers: headers });
 		    return this._http.
-		      post('http://localhost:8080/sistemadevendas/rest/contrato/excluir',
+		      post('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/contrato/excluir',
 		      json, options).map(res => res.json());
 		  }
   

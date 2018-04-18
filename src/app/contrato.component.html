@@ -1,6 +1,32 @@
 <div class="container">
 	<h1>Listagem de Contratos</h1>
-	<p></p>
+	<p>
+	<button type="button" class="btn btn-success" *ngIf="!new_contract" (click)="new_contract = true;">Cadastrar acordo para cliente novo</button>
+	</p>
+	<div *ngIf="new_contract">
+		<form>
+		<div class="form-group">
+			<label for="nome">Nome do Cliente</label> <input type="text"
+				class="form-control" name="nome" [(ngModel)]="nomeCli" required>
+		</div>
+		<div class="form-group">
+			<label for="nome">Idade do Cliente</label> <input type="text"
+				class="form-control" name="nome" [(ngModel)]="idadeCli" required>
+		</div>
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <label class="input-group-text" for="inputGroupSelect01">Banco</label>
+		  </div>
+		  <select class="custom-select"  type="text"
+			class="form-control" name="idade" [(ngModel)]="banco_id"
+			required>
+		    <option *ngFor="let banco of bancos" value="{{banco.id}}">{{banco.nome}}</option>
+		  </select>
+		</div>
+		<button type="button" class="btn btn-success"  (click)="addContrato()">Inserir cliente novo e contrato</button>
+		<button type="button" class="btn btn-success" (click)="new_contract = false;">Cancelar</button>
+	</form>
+	</div>
 	<table class="table">
 		<tr>
 			<th>Cliente</th>

@@ -12,7 +12,7 @@ export class HttpBancoService {
 
   getBancos(): Observable<Banco[]> {
     return this._http.
-      get('http://localhost:8080/sistemadevendas/rest/banco').
+      get('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/banco').
       map(this.extractData);
   }
 
@@ -25,7 +25,7 @@ export class HttpBancoService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this._http.
-      post('http://localhost:8080/sistemadevendas/rest/banco',
+      post('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/banco',
       json, options).map(res => res.json());
   }
   
@@ -34,7 +34,7 @@ export class HttpBancoService {
 	    const headers = new Headers({ 'Content-Type': 'application/json' });
 	    const options = new RequestOptions({ headers: headers });
 	    return this._http.
-	      post('http://localhost:8080/sistemadevendas/rest/banco/alterar',
+	      post('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/banco/alterar',
 	      json, options).map(res => res.json());
 	  }
 
@@ -43,7 +43,7 @@ export class HttpBancoService {
 		    const headers = new Headers({ 'Content-Type': 'application/json' });
 		    const options = new RequestOptions({ headers: headers });
 		    return this._http.
-		      post('http://localhost:8080/sistemadevendas/rest/banco/excluir',
+		      post('http://node7458-newton.br1.saphir.global/sistemadevendas/rest/banco/excluir',
 		      json, options).map(res => res.json());
 		  }
   

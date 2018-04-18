@@ -11,28 +11,27 @@
 				required>
 		</div>
 		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="addCliente()">Editar</button>
-		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="is_edit = !is_edit">Cancelar</button>
+		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="is_edit = !is_edit; cliente.nome = ''; cliente.idade = null;">Cancelar</button>
 		<button type="button" class="btn btn-success" *ngIf="!is_edit" (click)="addCliente()">Cadastrar</button>
 	</form>
 	
 	<form *ngIf="new_contract">
-		<span>{{clienteContract.nome}}</span>
-		<span>{{clienteContract.idade}}</span>
-		
+		<span>Cliente: {{clienteContract.nome}}</span>
+		<span>Idade: {{clienteContract.idade}}</span>
 
 		<div class="input-group mb-3">
 		  <div class="input-group-prepend">
 		    <label class="input-group-text" for="inputGroupSelect01">Banco</label>
 		  </div>
 		  <select class="custom-select"  type="text"
-			class="form-control" name="idade" [(ngModel)]="cliente.nome"
+			class="form-control" name="idade" [(ngModel)]="banco_id"
 			required>
-		    <option *ngFor="let banco of bancos" value="banco.id">{{banco.nome}}</option>
+		    <option *ngFor="let banco of bancos" value="{{banco.id}}">{{banco.nome}}</option>
 		  </select>
 		</div>
 
 
-		<button type="button" class="btn btn-info" *ngIf="!is_edit" (click)="addCliente()">Cadastrar Contrato</button>
+		<button type="button" class="btn btn-info" *ngIf="!is_edit" (click)=generateContract()>Cadastrar Contrato</button>
 	</form>
 
 	<p></p>

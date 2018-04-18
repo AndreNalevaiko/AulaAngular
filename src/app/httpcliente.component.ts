@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';
 import { HttpClienteService } from './httpcliente.service'
 import { HttpBancoService } from './httpbanco.service'
+import { HttpContratoService } from './httpcontrato.service'
 import { Cliente } from './cliente.component'
 import { Banco } from './banco.component'
 
 @Component({
   selector: 'app-root',
   templateUrl: './cliente.component.html',
-  providers: [HttpClienteService, HttpBancoService] 
+  providers: [HttpClienteService, HttpBancoService, HttpContratoService] 
 })
 export class HttpClienteComponent {
   clientes: Cliente[];
   bancos: Banco[];
   cliente: Cliente;
-  banco: Banco;
+  banco_id = null;
   clienteContract: Cliente;
   is_edit = false;
   new_contract = false;
 
-  constructor(private httpClienteS: HttpClienteService, private httpBancoS: HttpBancoService) {
+  constructor(private httpClienteS: HttpClienteService, private httpBancoS: HttpBancoService, private httpContratoS: HttpContratoService) {
     this.cliente = new Cliente();
     this.getClientes();
     this.getBancos();
@@ -82,8 +83,20 @@ export class HttpClienteComponent {
 	
 	cadastrarContrato(cliente) {
 	    this.clienteContract = cliente;
-	    console.log('PASSOU AQUI');
 	    this.new_contract = true;
   }
+	
+	generateContract(){
+		var dataContract = {
+				idBanco: +this.banco_id,
+				idCustomer: this.clienteContract.id
+		};
+		this.httpContratoS.generateContratoWithCustomer(dataContract).subscribe(
+				  data => data,
+				  error => alert(error),
+				  () => this.getClientes()
+		  	);
+		this.new_contract = false;
+	}
   
 }

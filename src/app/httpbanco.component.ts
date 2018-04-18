@@ -10,6 +10,7 @@ import { Banco } from './banco.component'
 export class HttpBancoComponent {
   bancos: Banco[];
   banco: Banco;
+  is_edit = false;
 
   constructor(private httpBancoS: HttpBancoService) {
     this.banco = new Banco();

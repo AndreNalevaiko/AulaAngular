@@ -5,7 +5,9 @@
 			<label for="nome">Nome</label> <input type="text"
 				class="form-control" name="nome" [(ngModel)]="banco.nome" required>
 		</div>
-		<button type="button" class="btn btn-success" (click)="addBanco()">Cadastrar</button>
+		<button type="button" class="btn btn-success" *ngIf="!is_edit" (click)="addBanco()">Cadastrar</button>
+		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="addBanco()">Alterar</button>
+		<button type="button" class="btn btn-success" *ngIf="is_edit" (click)="is_edit = false; banco.nome = '';">Cancelar</button>
 	</form>
 
 	<p></p>
